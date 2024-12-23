@@ -24,8 +24,23 @@ For example, rules that state the membership of a string term to a regular langu
 by the default Z3 solver.
 
 In general, Noodler interacts with Z3 as follows. First, it receives a satisfying boolean assignment from Z3's SAT solver and then removes
-useless assignments for dealing with a simpler formula. Nooler then converts the conjunction of string 
+useless assignments for dealing with a simpler formula. Noodler then converts the conjunction of string literals to a LIA constraint and feeds it back
+to the solver as a theory lemma. Noodler also implements, as aforementioned, a decision procedure based on NFAs called \textit{stabilization-based procedure}.
 
+Regarding the concepts around string theory handled by the solver, Noodler uses different ideas for each step. Noodler applies \textit{Axiom Saturation}, 
+which saturates the input formula before the SAT solver starts generating assignments. This makes the solver avoid checking SAT assignments that are clearly false. Another
+saturation, now regarding string predicates, is to replace some formulas with equivalent ones that are more suitable for the approach, such as length/regular
+constraints. One example is the replacement of \(\neg\text{contains}(s, "abc")\) by \(s \notin \Sigma^*abc\Sigma^*\). 
+
+The main decision procedure used by Noodler is the \textit{stabilization-based procedure}
+
+During preprocesing, Noodler decreases the number of equations by applying conversion to regular constraints, propagation of epsilons (empty word), underapproximation rules, etc.
+Another thing Noodler does is to check for trivial unsatisfiable parts of the formula for an eanly termination. Noolder current supports a lot of
+string functions and predicates such as \texttt{replace}, \texttt{contains}, \texttt{substr}, \texttt{at}, \texttt{indexOf}, etc. The predicates \texttt{replace\_all} and
+\texttt{to/from\_int} are not supported. In general, the decision procedure implemented in Z3-Noodler can handle the fragment of string theory of chain-free fragment with unbounded
+disequations and regular constraints, and quadratic equations. 
+
+The results presented in the paper show that Z3-Noolder is capable of competing against other string solvers in the state of the art.
 
 
 
