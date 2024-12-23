@@ -8,15 +8,25 @@
 
 \title{Theory and Practice of SMT Solving - Seminar report}
 \author{Luís Felipe Ramos Ferreira}
-\date{\href{mailto:lframos.lf@gmail.com}{\texttt{lframos.lf@gmail.com}}
-}
 
 \begin{document}
 
 \maketitle
 
-The paper presents a novel tool called Z3-Noodler, which is a fork of the Z3 project where the main string solver is substituted by
-Noodle, a string theory solver based on automata theory.
+The paper presents a novel tool called Z3-Noodler, which is a fork of the Z3 SMT theorem prover where the main string solver is substituted by
+Noodler, a string theory solver based on the \textit{stabilization-based procedure} for solving string formulae. Since the procedure depends on the usage
+of nondeterministic finite automata (NFA), the authors used a C++ library caled Mata for handling operations over automata.
+
+Since the solver was developed over Z3, several tools inside it's environment were used, such as the SMT-LIB parser, formula preprocessing, linear integer arithmetic
+solver, SAT solver, and also the whole DPLL(\(\mathcal{T}\)) architecture. In regards of the formula rewriting step, some modifications were
+made in order to benefit the decision procedure used in Noodler. Some rewritings made by default were not benefitial for the new solver, so they were disbaled.
+For example, rules that state the membership of a string term to a regular language are efficiently handled by Noodler, but they were initially preprocessed and changed
+by the default Z3 solver.
+
+In general, Noodler interacts with Z3 as follows. First, it receives a satisfying boolean assignment from Z3's SAT solver and then removes
+useless assignments for dealing with a simpler formula. Nooler then converts the conjunction of string 
+
+
 
 
 \end{document}
