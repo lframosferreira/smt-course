@@ -16,11 +16,11 @@
 
 The paper presents a novel tool called Z3-Noodler, which is a fork of the Z3 SMT theorem prover where the main string solver is substituted by
 Noodler, a string theory solver based on the \textit{stabilization-based procedure} for solving string formulae. The procedure depends on the usage
-of nondeterministic finite automata (NFA), and so the authors used a C++ library caled Mata for handling operations over this kind of structure.
+of nondeterministic finite automata (NFA), and so the authors used a C++ library called Mata for handling operations over this kind of structure.
 
-Since the solver was developed over Z3, several tools inside it's environment were used, such as the SMT-LIB parser, formula preprocessing, linear integer arithmetic
+Since the solver was developed over Z3, several tools inside its environment were used, such as the SMT-LIB parser, formula preprocessing, linear integer arithmetic
 solver, SAT solver, and also the whole DPLL(\(\mathcal{T}\)) architecture. In regards of the formula rewriting step, some modifications were
-made in order to benefit the decision procedure used in Noodler. Some rewritings made by default were not benefitial for the new solver, so they were disabled.
+made in order to benefit the decision procedure used in Noodler. Some rewritings made by default were not beneficial for the new solver, so they were disabled.
 For example, rules that state the membership of a string term to a regular language are efficiently handled by Noodler, but they were initially preprocessed and changed
 by the default Z3 solver.
 
@@ -37,15 +37,15 @@ The main decision procedure used by Noodler is the \textit{stabilization-based p
 the regular constraints in the formula into NFAs, and then apply, during the construction, determinizations and minimizations in the automata. For quadratic equations, in particular, a decision procedure
 called \textit{Nielsen transformation} is used, which constructs a graph from the formula and reason about the satisfiability of the formula over that graph.
 
-During preprocesing, Noodler decreases the number of equations by applying conversion to regular constraints, propagation of epsilons (empty word), underapproximation rules, etc.
-Another thing Noodler does is to check for trivial unsatisfiable parts of the formula for an eanly termination. Noolder current supports a lot of
+During preprocessing, Noodler decreases the number of equations by applying conversion to regular constraints, propagation of epsilons (empty word), underapproximation rules, etc.
+Another thing Noodler does is to check for trivial unsatisfiable parts of the formula for an early termination. Noodler currently supports a lot of
 string functions and predicates such as \texttt{replace}, \texttt{contains}, \texttt{substr}, \texttt{at}, \texttt{indexOf}, etc. The predicates \texttt{replace\_all} and
 \texttt{to/from\_int} are not supported. In general, the decision procedure implemented in Z3-Noodler can handle the chain-free fragment of string theory, with unbounded
-disequations and regular constraints, and quadratic equations. For the parts of the theory outside of this fragment, the implementation is sound but not compthe parts of the theory outside of this fragment, the implementation is sound but not complete.
+disequations and regular constraints, and quadratic equations. For the parts of the theory outside of this fragment, the implementation is sound but not complete.
 
-The results presented in the paper show that Z3-Noodler is capable of competing against other string solvers in the state of the art, such as cvc5, Z3, OSTRICH, amog others. In particular, three sets of data were used for benchmarking, denominated \texttt{Regex}(regular membership and length constraints), \texttt{Equations} (word equations and length constraints) and \texttt{Predicates-small}(also includes a few predicates). On the \texttt{Regex} group, Z3-Noodler outperforms most of the tools, mainly because of the nature of the usage of NFAs for handling regular constraints. In the \texttt{Equations} group, the tool also performed well, being more efficient than most of the other tools. \texttt{Predicates-small}, however, is domintaed by cvc5, and Z3-Noodler didn't perform very well, but the results could be improved by applying more axiom saturation for predicates.
+The results presented in the paper show that Z3-Noodler is capable of competing against other string solvers in the state of the art, such as cvc5, Z3, OSTRICH, among others. In particular, three sets of data were used for benchmarking, denominated \texttt{Regex}(regular membership and length constraints), \texttt{Equations} (word equations and length constraints) and \texttt{Predicates-small} (also includes a few predicates). On the \texttt{Regex} group, Z3-Noodler outperforms most of the tools, mainly because of the nature of the usage of NFAs for handling regular constraints. In the \texttt{Equations} group, the tool also performed well, being more efficient than most of the other tools. \texttt{Predicates-small}, however, is dominated by cvc5, and Z3-Noodler didn't perform very well, but the results could be improved by applying more axiom saturation for predicates.
 
-In general, we can conclude that Z3-Noodler is a very efficient approach for solving a fragment of string theory formulae, being particularly efficient when the input formula contains regular constraints such as regular membership, which allows for the usage of powerful automata algorithms implemented in the Mata library. However, the tool also contains the weakness of not being able to handle efficiently formulae with a large amount of predicates, limiting it's practical usage.
+In general, we can conclude that Z3-Noodler is a very efficient approach for solving a fragment of string theory formulae, being particularly efficient when the input formula contains regular constraints such as regular membership, which allows for the usage of powerful automata algorithms implemented in the Mata library. However, the tool also contains the weakness of not being able to handle efficiently formulae with a large amount of predicates, limiting its practical usage.
 
 
 \end{document}
