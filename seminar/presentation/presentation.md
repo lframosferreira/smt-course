@@ -8,26 +8,32 @@ output: beamer_presentation
 ---
 
 # What is Z3-Noodler
-Welcome to my presentation!
+
+- Fork of the Z3 theorem prover
+- String theory solver replaced by *Noodler*
+  - *Stabilization-based procedure*
+  - Heavy usage of *non deterministic automata*
 
 ---
 
-# Slide 2: Introduction
-- First bullet point
-- Second bullet point
-- Third bullet point
+# Handling automata and regular expressions
+
+- Hard task
+- Mata library
+  - Union, concatenation, intersection, etc
+- Very efficient and optimized
 
 ---
 
-# Slide 3: Math Example
-Here is a mathematical formula:
+# Architecture
 
-$$ E = mc^2 $$
+- Takes advatnge of Z3's whole DPLL($$\mathcal{T}$$) architecture
+- Parser, rewriter and LIA solver
 
 ---
 
-# Slide 4: Code Example
-```python
-def hello_world():
-    print("Hello, world!")
+# Architecture
+  
+![Z3-Noodler architecture](images/arch.png)
 
+# End
