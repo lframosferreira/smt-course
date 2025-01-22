@@ -67,6 +67,11 @@ output: beamer_presentation
 of $s_2$
 - After stability, length constraints are added and fed to the LIA solver
 
+# Decision Procedures: Stabilization Method
+
+- $zyx = xxz \land x \in a^* \land y \in a^+b^+ \land z \in b^*$
+- Regular constraints enforce *UNSAT*
+
 # Decision Procedures: Nielsen Transformation
 
 - Efficient for quadratic equations
