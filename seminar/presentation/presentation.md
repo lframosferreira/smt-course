@@ -67,10 +67,20 @@ output: beamer_presentation
 of $s_2$
 - After stability, length constraints are added and fed to the LIA solver
 
-# Decision Procedures: Stabilization Method
+# Decision Procedures: Stabilization Based
 
 - $zyx = xxz \land x \in a^* \land y \in a^+b^+ \land z \in b^*$
+- $x$ must be $\epsilon$
+- $zy = z$
 - Regular constraints enforce *UNSAT*
+
+# Decision Procedures: Stabilization Based
+
+- $x_1 \dots x_m = x_{m+1} \dots x_n \land \bigwedge_{x \in \mathbb{X}} x \in Lang(x)$ has a solution if the word equations constraint is **STABLE**
+- Stability: $Lang(x_1) \dots Lang(x_m) = Lang(x_{m+1}) \dots Lang(x_n)$
+- Complete for *SAT* formulae
+- For *UNSAT* formulae the refinement steps may go on forever
+- Guaranteed to terminate for the chain-free fragment
 
 # Decision Procedures: Nielsen Transformation
 
