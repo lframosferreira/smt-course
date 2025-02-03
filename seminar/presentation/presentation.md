@@ -58,6 +58,12 @@ output: beamer_presentation
   - Regular constraints
 - $\neg contains(s, "abc")$ becomes $s \notin \Sigma^*abc\Sigma^*$
 
+# Decision Procedures: Stabilization Method
+
+- $zyx = xxz \land x \in a^* \land y \in a^+b^+ \land z \in b^*$
+- $zy = z \land y \in a^+b^+ \land z \in b^*$
+- Regular constraints enforce *UNSAT*
+
 # Decision Procedures: Stabilization Based
 
 - Solves word (dis)equations with regular and length constraints
@@ -66,11 +72,6 @@ output: beamer_presentation
 - Stability: for every word equation $s_1 = s_2$, the language of the NFA of $s_1$ equals the language of the NFA
 of $s_2$
 - After stability, length constraints are added and fed to the LIA solver
-
-# Decision Procedures: Stabilization Method
-
-- $zyx = xxz \land x \in a^* \land y \in a^+b^+ \land z \in b^*$
-- Regular constraints enforce *UNSAT*
 
 # Decision Procedures: Nielsen Transformation
 
@@ -89,7 +90,7 @@ of $s_2$
 - $replace, substr, at, indexof, prefix, suffix, contains$
 - Limited support for $\neg contains$
 - Don't support $replace\_all$ and $to/from\_int$
-- Z3-Noodler is complete for the chain-free fragment with unbounded disequations, regular constraints and quadratic equations
+- Z3-Noodler is complete for the chain-free fragment with unbounded disequations and regular constraints, and for quadratic equations
 - Outside of this, the theory is sound but not complete
 
 # Experiments
