@@ -7,6 +7,12 @@ theme: "default" # You can change this to other Beamer themes like metropolis, M
 output: beamer_presentation
 ---
 
+# String theory
+
+- Data type present in almost every programming language
+- SQL injection
+- Cross site scripting (XSS)
+
 # What is Z3-Noodler
 
 - Fork of the Z3 theorem prover
@@ -29,6 +35,7 @@ output: beamer_presentation
 
 - Takes advantage of Z3's whole DPLL($\mathcal{T}$) architecture
 - Parser, rewriter and LIA solver
+  - Some rewriting steps are removed
 
 ---
 
@@ -61,7 +68,8 @@ output: beamer_presentation
 # Decision Procedures: Stabilization Method
 
 - $zyx = xxz \land x \in a^* \land y \in a^+b^+ \land z \in b^*$
-- $zy = z \land y \in a^+b^+ \land z \in b^*$
+- $zyx = xxz \land x \in a^* \land y \in a^+b^+ \land z \in b^+$
+- $zy = z \land y \in a^+b^+ \land z \in b^+$
 - Regular constraints enforce *UNSAT*
 
 # Decision Procedures: Stabilization Based
